@@ -7,5 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><atom:link href="https://MoeSinon.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/mysql/</guid>
+      <description>每日测验 MySQL中常用查询关键字及作用 针对多表查询有哪些查询方式，各自有什么特点 昨日内容回顾 查询主要关键字
+select distinct 字段1,字段2,... from 表名 where 分组之前的筛选条件 group by 分组条件 having 分组之后的筛选条件 order by 排序字段1 asc,排序字段2 desc limit 5,5 where
+where id&amp;gt;=3 and id&amp;lt;=6; where id between 3 and 6; where salary=18000 or salary=17000; where salary in (18000,17000); where salary not in (18000,17000); where salary*20 from emp; # 模糊匹配 like &amp;#34;&amp;#34;&amp;#34; % 任意多个字符 _ 任意单个字符 &amp;#34;&amp;#34;&amp;#34; where name like &amp;#39;%mode%&amp;#39;; where name like &amp;#39;____&amp;#39;; where char_length(name) = 4; # 针对null数据 判断的时候用is不要用= where post_comment is null; group by</description>
+    </item>
+    
   </channel>
 </rss>

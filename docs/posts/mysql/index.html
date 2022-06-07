@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="每日测验 MySQL中常用查询关键字及作用 针对多表查询有哪些查询方式，各自有什么特点 昨日内容回顾 查询主要关键字
+select distinct 字段1,字段2,... from 表名 where 分组之前的筛选条件 group by 分组条件 having 分组之后的筛选条件 order by 排序字段1 asc,排序字段2 desc limit 5,5 where
+where id&amp;gt;=3 and id&amp;lt;=6; where id between 3 and 6; where salary=18000 or salary=17000; where salary in (18000,17000); where salary not in (18000,17000); where salary*20 from emp; # 模糊匹配 like &amp;#34;&amp;#34;&amp;#34; % 任意多个字符 _ 任意单个字符 &amp;#34;&amp;#34;&amp;#34; where name like &amp;#39;%mode%&amp;#39;; where name like &amp;#39;____&amp;#39;; where char_length(name) = 4; # 针对null数据 判断的时候用is不要用= where post_comment is null; group by" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://MoeSinon.github.io/blog/posts/mysql/" />
+
+
+    <title>
+        
+             :: Take Care And Be Well 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/blog/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/blog/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/blog/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/blog/favicon-16x16.png">
+    <link rel="manifest" href="/blog/site.webmanifest">
+    <link rel="mask-icon" href="/blog/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/blog/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="每日测验 MySQL中常用查询关键字及作用 针对多表查询有哪些查询方式，各自有什么特点 昨日内容回顾 查询主要关键字
+select distinct 字段1,字段2,... from 表名 where 分组之前的筛选条件 group by 分组条件 having 分组之后的筛选条件 order by 排序字段1 asc,排序字段2 desc limit 5,5 where
+where id&gt;=3 and id&lt;=6; where id between 3 and 6; where salary=18000 or salary=17000; where salary in (18000,17000); where salary not in (18000,17000); where salary*20 from emp; # 模糊匹配 like &#34;&#34;&#34; % 任意多个字符 _ 任意单个字符 &#34;&#34;&#34; where name like &#39;%mode%&#39;; where name like &#39;____&#39;; where char_length(name) = 4; # 针对null数据 判断的时候用is不要用= where post_comment is null; group by">
+
+<meta itemprop="wordCount" content="856"><meta itemprop="image" content="https://MoeSinon.github.io/blog"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://MoeSinon.github.io/blog"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="每日测验 MySQL中常用查询关键字及作用 针对多表查询有哪些查询方式，各自有什么特点 昨日内容回顾 查询主要关键字
+select distinct 字段1,字段2,... from 表名 where 分组之前的筛选条件 group by 分组条件 having 分组之后的筛选条件 order by 排序字段1 asc,排序字段2 desc limit 5,5 where
+where id&gt;=3 and id&lt;=6; where id between 3 and 6; where salary=18000 or salary=17000; where salary in (18000,17000); where salary not in (18000,17000); where salary*20 from emp; # 模糊匹配 like &#34;&#34;&#34; % 任意多个字符 _ 任意单个字符 &#34;&#34;&#34; where name like &#39;%mode%&#39;; where name like &#39;____&#39;; where char_length(name) = 4; # 针对null数据 判断的时候用is不要用= where post_comment is null; group by"/>
+
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="每日测验 MySQL中常用查询关键字及作用 针对多表查询有哪些查询方式，各自有什么特点 昨日内容回顾 查询主要关键字
+select distinct 字段1,字段2,... from 表名 where 分组之前的筛选条件 group by 分组条件 having 分组之后的筛选条件 order by 排序字段1 asc,排序字段2 desc limit 5,5 where
+where id&gt;=3 and id&lt;=6; where id between 3 and 6; where salary=18000 or salary=17000; where salary in (18000,17000); where salary not in (18000,17000); where salary*20 from emp; # 模糊匹配 like &#34;&#34;&#34; % 任意多个字符 _ 任意单个字符 &#34;&#34;&#34; where name like &#39;%mode%&#39;; where name like &#39;____&#39;; where char_length(name) = 4; # 针对null数据 判断的时候用is不要用= where post_comment is null; group by" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://MoeSinon.github.io/blog/posts/mysql/" /><meta property="og:image" content="https://MoeSinon.github.io/blog"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Take Care And Be Well" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/blog" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">catch the time</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/blog/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://MoeSinon.github.io/blog/posts/mysql/"></a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <h1 id="每日测验">每日测验</h1>
+<ul>
+<li>MySQL中常用查询关键字及作用</li>
+<li>针对多表查询有哪些查询方式，各自有什么特点</li>
+</ul>
+<h1 id="昨日内容回顾">昨日内容回顾</h1>
+<ul>
+<li>
+<p>查询主要关键字</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>select distinct 字段1,字段2,<span style="color:#f92672">...</span> <span style="color:#f92672">from</span> 表名
+</span></span><span style="display:flex;"><span>	where 分组之前的筛选条件
+</span></span><span style="display:flex;"><span>    group by  分组条件
+</span></span><span style="display:flex;"><span>    having  分组之后的筛选条件
+</span></span><span style="display:flex;"><span>    order by  排序字段1 asc,排序字段2 desc
+</span></span><span style="display:flex;"><span>    limit <span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>
+</span></span></code></pre></div></li>
+<li>
+<p>where</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>where id<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">3</span> <span style="color:#f92672">and</span> id<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>where id between <span style="color:#ae81ff">3</span> <span style="color:#f92672">and</span> <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>where salary<span style="color:#f92672">=</span><span style="color:#ae81ff">18000</span> <span style="color:#f92672">or</span> salary<span style="color:#f92672">=</span><span style="color:#ae81ff">17000</span>;
+</span></span><span style="display:flex;"><span>where salary <span style="color:#f92672">in</span> (<span style="color:#ae81ff">18000</span>,<span style="color:#ae81ff">17000</span>);
+</span></span><span style="display:flex;"><span>where salary <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> (<span style="color:#ae81ff">18000</span>,<span style="color:#ae81ff">17000</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>where salary<span style="color:#f92672">*</span><span style="color:#ae81ff">20</span> <span style="color:#f92672">from</span> emp;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 模糊匹配 like</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">%  任意多个字符
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">_  任意单个字符
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>where name like <span style="color:#e6db74">&#39;%mode%&#39;</span>;
+</span></span><span style="display:flex;"><span>where name like <span style="color:#e6db74">&#39;____&#39;</span>;
+</span></span><span style="display:flex;"><span>where char_length(name) <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 针对null数据 判断的时候用is不要用=</span>
+</span></span><span style="display:flex;"><span>where post_comment <span style="color:#f92672">is</span> null;
+</span></span></code></pre></div></li>
+<li>
+<p>group by</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 分组的应用场景非常多 </span>
+</span></span><span style="display:flex;"><span>	每个
+</span></span><span style="display:flex;"><span>    平均
+</span></span><span style="display:flex;"><span>    最大
+</span></span><span style="display:flex;"><span>    最小
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">分组之后只能直接获取到分组的依据 其他字段都无法直接获取
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set global sql_mode = &#39;only_full_group_by&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp group by post;  报错
+</span></span><span style="display:flex;"><span>select post <span style="color:#f92672">from</span> emp group by post;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># group_concat:帮助我们获取到分组之外的字段信息并且可以拼接多个字段</span>
+</span></span><span style="display:flex;"><span>select post,group_concat(salary,<span style="color:#e6db74">&#39;:&#39;</span>,name) <span style="color:#f92672">from</span> emp;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># concat:分组之前帮助我们获取字段信息并且可以拼接多个字段</span>
+</span></span><span style="display:flex;"><span>select concat(name,<span style="color:#e6db74">&#39;??&#39;</span>) <span style="color:#f92672">from</span> emp;
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># concat_ws:如果多个字段之间的连接符号是相同的情况下 你可以直接使用concat_ws来完成</span>
+</span></span><span style="display:flex;"><span>select concat_ws(<span style="color:#e6db74">&#39;:&#39;</span>,name,age,sex) <span style="color:#f92672">from</span> emp;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">复习
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;?&#39;.join([111,222,333,444])  报错！
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># as语法</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">1</span> 可以给展示字段起别名
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">2</span> 可以给表起别名
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 聚合函数</span>
+</span></span><span style="display:flex;"><span>	max
+</span></span><span style="display:flex;"><span>    min
+</span></span><span style="display:flex;"><span>    sum
+</span></span><span style="display:flex;"><span>    count
+</span></span><span style="display:flex;"><span>    avg
+</span></span><span style="display:flex;"><span>  聚合函数必须在分组之后使用
+</span></span></code></pre></div></li>
+<li>
+<p>having</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 用法根where一模一样 只不过它是作用于分组之后的再次筛选</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">....</span>group by post having avg(salary) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">30000</span>;
+</span></span></code></pre></div></li>
+<li>
+<p>distinct</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 数据必须是一模一样的情况下才能去重 </span>
+</span></span><span style="display:flex;"><span>select distinct post <span style="color:#f92672">from</span> emp;
+</span></span></code></pre></div></li>
+<li>
+<p>order by</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 排序 默认是升序</span>
+</span></span><span style="display:flex;"><span>order by salary;  <span style="color:#f92672">===</span>   order by salary asc;
+</span></span><span style="display:flex;"><span>order by salary desc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>order by salary asc,age desc;  <span style="color:#75715e"># 还支持多个字段备用比较</span>
+</span></span></code></pre></div></li>
+<li>
+<p>limit</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">限制数据的展示条数    效果就是分页的效果
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp limit <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>limit <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>limit <span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">5</span>  第一个参数是起始位置 第二个参数是条数
+</span></span></code></pre></div></li>
+<li>
+<p>regexp</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">正则是一门独立的语言
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在python中如果你想使用正则需要借助于re模块
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	面试题
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		1.re模块中常用的方法
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			findall:分组优先展示
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				^j.*(n|y)$
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				不会展示所有正则表达式匹配到的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">				而仅仅展示括号内正则表达式匹配到的内容
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			match:从头匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			search:从整体匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		2.贪婪匹配与非贪婪匹配
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			正则表达式默认都是贪婪匹配的
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			将贪婪变成非贪婪只需要在正则表达式后面加?
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			.*  贪婪
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			.*? 非贪婪
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp where name regexp <span style="color:#e6db74">&#39;^j.*n$&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>多表查询</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 联表操作</span>
+</span></span><span style="display:flex;"><span>select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp,dep;  笛卡尔积
+</span></span><span style="display:flex;"><span>	inner join
+</span></span><span style="display:flex;"><span>    	只拼接两种表中都公有的部分
+</span></span><span style="display:flex;"><span>        select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp inner join dep 
+</span></span><span style="display:flex;"><span>        	on emp<span style="color:#f92672">.</span>dep_id <span style="color:#f92672">=</span> dep<span style="color:#f92672">.</span>id;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 要加上表的前缀 不然容易造成冲突 </span>
+</span></span><span style="display:flex;"><span>    left join
+</span></span><span style="display:flex;"><span>    	左表数据全部展示  没有对应的就用NULL补全
+</span></span><span style="display:flex;"><span>    right join
+</span></span><span style="display:flex;"><span>    	右表数据全部展示  没有对应的就用NULL补全	
+</span></span><span style="display:flex;"><span>    union
+</span></span><span style="display:flex;"><span>    	左右全书展示 没有对应的就用NULL补全	
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 子查询</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">子查询就是我们平时解决问题的思路 分步处理
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">将一张表的查询结果当做另外一条sql语句的查询条件
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">(当做条件的时候 用括号括起来)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">select * from emp where id in (select id from dep);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>总结</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 书写sql语句的时候 select后面先用*占位 之后写完再改</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在写较为复杂的sql语句的时候 不要想着一口气写完 写一点查一点看一点再写！！！(只要是涉及到数据查询相关的语法都不应该一次性写完 不太现实)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在做多表查询的时候 联表操作和子查询可能会结合使用</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="知识点补充">知识点补充</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 查询平均年龄在25岁以上的部门名称</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;只要是多表查询 就有两种思路    联表    子查询&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 联表操作</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">1</span> 先拿到部门和员工表 拼接之后的结果
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">2</span> 分析语义 得出需要进行分组
+</span></span><span style="display:flex;"><span>    select dep<span style="color:#f92672">.</span>name <span style="color:#f92672">from</span> emp inner join dep
+</span></span><span style="display:flex;"><span>    	on emp<span style="color:#f92672">.</span>dep_id <span style="color:#f92672">=</span> dep<span style="color:#f92672">.</span>id
+</span></span><span style="display:flex;"><span>        group by dep<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>        having avg(age) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span>        ;
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;涉及到多表操作的时候 一定要加上表的前缀&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 子查询</span>
+</span></span><span style="display:flex;"><span>	select name <span style="color:#f92672">from</span> dep where id <span style="color:#f92672">in</span>
+</span></span><span style="display:flex;"><span>		(select dep_id <span style="color:#f92672">from</span> emp group by dep_id 
+</span></span><span style="display:flex;"><span>    		having avg(age) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">25</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 关键字exists(了解)</span>
+</span></span><span style="display:flex;"><span>	只返回布尔值 <span style="color:#66d9ef">True</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    返回True的时候外层查询语句执行
+</span></span><span style="display:flex;"><span>    返回False的时候外层查询语句不再执行
+</span></span><span style="display:flex;"><span>	select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp where exists 
+</span></span><span style="display:flex;"><span>    	(select id <span style="color:#f92672">from</span> dep where id<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>   select <span style="color:#f92672">*</span> <span style="color:#f92672">from</span> emp where exists 
+</span></span><span style="display:flex;"><span>    	(select id <span style="color:#f92672">from</span> dep where id<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">300</span>);
+</span></span></code></pre></div><h1 id="今日内容概要">今日内容概要</h1>
+<ul>
+<li>navicat可视化界面操作数据库</li>
+<li>数据库查询题目讲解(多表操作)</li>
+<li>python如何操作MySQL(pymysql模块)</li>
+<li>sql注入问题</li>
+<li>pymysql模块增删改查数据操作</li>
+</ul>
+<h1 id="今日内容详细">今日内容详细</h1>
+<h3 id="navicat软件">Navicat软件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">一开始学习python的时候 下载python解释器然后直接在终端书写
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">pycharm能够更加方便快捷的帮助你书写python代码
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">excel word pdf
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">我们在终端操作MySQL 也没有自动提示也无法保存等等 不方便开发
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Navicat内部封装了所有的操作数据库的命令 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">用户在使用它的时候只需要鼠标点点即可完成操作 无需书写sql语句
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><p><strong>安装</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>直接百度搜索 有破解版的也有非破解
+</span></span><span style="display:flex;"><span>非破解的有试用期 你如果不嫌麻烦 你就用使用
+</span></span><span style="display:flex;"><span>到期之后重新装再使用 或者破解一下也很简单
+</span></span><span style="display:flex;"><span>https:<span style="color:#f92672">//</span>www<span style="color:#f92672">.</span>cr173<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>soft<span style="color:#f92672">/</span><span style="color:#ae81ff">126934.</span>html
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>下载完成后是一个压缩包 直接解压 然后点击安装 有提醒直接点击next即可
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>navicat能够充当多个数据库的客户端
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>navicat图形化界面有时候反应速度较慢 你可以选择刷新或者关闭当前窗口再次打开即可
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>当你有一些需求该软件无法满足的时候 你就自己动手写sql
+</span></span></code></pre></div><h3 id="提示">提示</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1 MySQL是不区分大小写的
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	验证码忽略大小写
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		内部统一转大写或者小写比较即可
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			upper
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">			lower
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2 MySQL建议所有的关键字写大写
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3 MySQL中的注释 有两种
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	--
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	#
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4 在navicat中如何快速的注释和解注释
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	ctrl + ？  加注释
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	ctrl + ？  基于上述操作再来一次就是解开注释
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	如果你的navicat版本不一致还有可能是
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	ctrl + shift + ？解开注释
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h3 id="练习题">练习题</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">课下一定要把握上课将的这几道题全部自己独立的理解并写出来
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">在解决sql查询问题的时候 不要慌
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">一步一步慢慢来  最终能够东拼西凑出来就过关了！！！
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">、</span>查询所有的课程的名称以及对应的任课老师姓名
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> SELECT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	course<span style="color:#f92672">.</span>cname,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	teacher<span style="color:#f92672">.</span>tname 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	course
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	INNER JOIN teacher ON course<span style="color:#f92672">.</span>teacher_id <span style="color:#f92672">=</span> teacher<span style="color:#f92672">.</span>tid;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#ae81ff">4</span><span style="color:#960050;background-color:#1e0010">、</span>查询平均成绩大于八十分的同学的姓名和平均成绩
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> SELECT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student<span style="color:#f92672">.</span>sname,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	t1<span style="color:#f92672">.</span>avg_num 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	INNER JOIN (
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	SELECT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>student_id,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		avg( num ) AS avg_num 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		INNER JOIN student ON score<span style="color:#f92672">.</span>student_id <span style="color:#f92672">=</span> student<span style="color:#f92672">.</span>sid 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	GROUP BY
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>student_id 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	HAVING
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		AVG( num ) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">80</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	) AS t1 ON student<span style="color:#f92672">.</span>sid <span style="color:#f92672">=</span> t1<span style="color:#f92672">.</span>student_id;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#ae81ff">7</span><span style="color:#960050;background-color:#1e0010">、</span> 查询没有报李平老师课的学生姓名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 分步操作</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1 先找到李平老师教授的课程id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2 再找所有报了李平老师课程的学生id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3 之后去学生表里面取反 就可以获取到没有报李平老师课程的学生姓名</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> SELECT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student<span style="color:#f92672">.</span>sname 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> WHERE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	sid NOT IN (
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	SELECT DISTINCT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>student_id 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	WHERE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>course_id IN ( SELECT course<span style="color:#f92672">.</span>cid FROM teacher INNER JOIN course ON teacher<span style="color:#f92672">.</span>tid <span style="color:#f92672">=</span> course<span style="color:#f92672">.</span>teacher_id WHERE teacher<span style="color:#f92672">.</span>tname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;李平老师&#39;</span> ) 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#ae81ff">8</span><span style="color:#960050;background-color:#1e0010">、</span> 查询没有同时选修物理课程和体育课程的学生姓名
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span>     (只要选了一门的 选了两门和没有选的都不要)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1 先查物理和体育课程的id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2 再去获取所有选了物理和体育的学生数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3 按照学生分组 利用聚合函数count筛选出只选了一门的学生id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4 依旧id获取学生姓名</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> SELECT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student<span style="color:#f92672">.</span>sname 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> WHERE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	student<span style="color:#f92672">.</span>sid IN (
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	SELECT
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>student_id 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	FROM
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	WHERE
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>course_id IN ( SELECT course<span style="color:#f92672">.</span>cid FROM course WHERE course<span style="color:#f92672">.</span>cname IN ( <span style="color:#e6db74">&#39;物理&#39;</span>, <span style="color:#e6db74">&#39;体育&#39;</span> ) ) 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	GROUP BY
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		score<span style="color:#f92672">.</span>student_id 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	HAVING
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 		COUNT( score<span style="color:#f92672">.</span>course_id ) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> 	);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span> <span style="color:#ae81ff">9</span><span style="color:#960050;background-color:#1e0010">、</span> 查询挂科超过两门(包括两门)的学生姓名和班级
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1 先筛选出所有分数小于60的数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2 按照学生分组 对数据进行计数获取大于等于2的数据</span>
+</span></span><span style="display:flex;"><span>SELECT
+</span></span><span style="display:flex;"><span>	class<span style="color:#f92672">.</span>caption,
+</span></span><span style="display:flex;"><span>	student<span style="color:#f92672">.</span>sname 
+</span></span><span style="display:flex;"><span>FROM
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">class</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">INNER</span> JOIN student ON class<span style="color:#f92672">.</span>cid <span style="color:#f92672">=</span> student<span style="color:#f92672">.</span>class_id 
+</span></span><span style="display:flex;"><span>WHERE
+</span></span><span style="display:flex;"><span>	student<span style="color:#f92672">.</span>sid IN (
+</span></span><span style="display:flex;"><span>	SELECT
+</span></span><span style="display:flex;"><span>		score<span style="color:#f92672">.</span>student_id 
+</span></span><span style="display:flex;"><span>	FROM
+</span></span><span style="display:flex;"><span>		score 
+</span></span><span style="display:flex;"><span>	WHERE
+</span></span><span style="display:flex;"><span>		score<span style="color:#f92672">.</span>num <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">60</span> GROUP BY score<span style="color:#f92672">.</span>student_id HAVING COUNT( score<span style="color:#f92672">.</span>course_id ) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span> 
+</span></span><span style="display:flex;"><span>	);
+</span></span></code></pre></div><h3 id="pymysql模块">pymysql模块</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">支持python代码操作数据库MySQL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>pip3 install pymysql
+</span></span></code></pre></div><h3 id="sql注入">sql注入</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">利用一些语法的特性 书写一些特点的语句实现固定的语法
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">MySQL利用的是MySQL的注释语法
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">select * from user where name=&#39;jason&#39; -- jhsadklsajdkla&#39; and password=&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">select * from user where name=&#39;xxx&#39; or 1=1 -- sakjdkljakldjasl&#39; and password=&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>日常生活中很多软件在注册的时候都不能含有特殊符号
+</span></span><span style="display:flex;"><span>因为怕你构造出特定的语句入侵数据库 不安全
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 敏感的数据不要自己做拼接 交给execute帮你拼接即可</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 结合数据库完成一个用户的登录功能？</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pymysql
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>conn <span style="color:#f92672">=</span> pymysql<span style="color:#f92672">.</span>connect(
+</span></span><span style="display:flex;"><span>    host <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;127.0.0.1&#39;</span>,
+</span></span><span style="display:flex;"><span>    port <span style="color:#f92672">=</span> <span style="color:#ae81ff">3306</span>,
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;root&#39;</span>,
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;123456&#39;</span>,
+</span></span><span style="display:flex;"><span>    database <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;day48&#39;</span>,
+</span></span><span style="display:flex;"><span>    charset <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;utf8&#39;</span>  <span style="color:#75715e"># 编码千万不要加-</span>
+</span></span><span style="display:flex;"><span>)  <span style="color:#75715e"># 链接数据库</span>
+</span></span><span style="display:flex;"><span>cursor <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>cursor(cursor<span style="color:#f92672">=</span>pymysql<span style="color:#f92672">.</span>cursors<span style="color:#f92672">.</span>DictCursor)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>username <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#39;&gt;&gt;&gt;:&#39;</span>)
+</span></span><span style="display:flex;"><span>password <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#39;&gt;&gt;&gt;:&#39;</span>)
+</span></span><span style="display:flex;"><span>sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;select * from user where name=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> and password=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 不要手动拼接数据 先用%s占位 之后将需要拼接的数据直接交给execute方法即可</span>
+</span></span><span style="display:flex;"><span>print(sql)
+</span></span><span style="display:flex;"><span>rows <span style="color:#f92672">=</span> cursor<span style="color:#f92672">.</span>execute(sql,(username,password))  <span style="color:#75715e"># 自动识别sql里面的%s用后面元组里面的数据替换</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> rows:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;登录成功&#39;</span>)
+</span></span><span style="display:flex;"><span>    print(cursor<span style="color:#f92672">.</span>fetchall())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;用户名密码错误&#39;</span>)
+</span></span></code></pre></div><p><strong>作业布置</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1 navicat自己玩一玩
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2 练习题一定要搞懂 照着我的思路一遍遍的看敲
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3 熟悉pymysql的使用
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4 sql注入产生的原因和解决方法 了解
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5 思考:如何结合mysql实现用户的注册和登录功能？
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        856 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          0001-01-01 08:00
+        
+
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=&amp;caption=&amp;canonicalUrl=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=&amp;body=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f&amp;media=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f;description=" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f&amp;title=&amp;summary=&amp;source=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f&amp;resubmit=true&amp;title=" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f;title=" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=%20https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f&amp;t=" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=&amp;url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fmysql%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/blog/bundle.min.a2c5b062c87998f04d1b5dfb6a89a1b2d79786c21d0cb63a05e8a2082984b64b77d80955e3b97eab17273775162ba372511b711fea2f7608f216e68a67bb22d6.js" integrity="sha512-osWwYsh5mPBNG137aomhsteXhsIdDLY6BeiiCCmEtkt32AlV47l&#43;qxcnN3UWK6NyURtxH&#43;ovdgjyFuaKZ7si1g=="></script>
+
+
+
+    </body>
+</html>
