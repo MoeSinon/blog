@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="接下来我们进入技巧模式，技巧模式需要你注意，注意，注意，无需动脑子
+首先随便开启一个后台控制控制器，如果不是赋值那就不要加”；“,当然你也可以加。
+接下来先来看一下strict模式
+&amp;#34;use strict&amp;#34; 如果你需要自动添加“类”和“模块”那就不要用 prompt() confirm() 可以试试 零填充右移位 （&amp;gt;&amp;gt;&amp;gt; ) ?? 试试这个或许就知道 alert(firstName ?? lastName ?? nickName ?? &amp;#34;Anonymous&amp;#34;); // Supercoder 还有这个 let x = 1 &amp;amp;&amp;amp; 2 ?? 3; // Syntax error 想要让他work？ let x = (1 &amp;amp;&amp;amp; 2) ?? 3; // Works [1, 2].forEach(alert) for (let i = 0; i &amp;lt; 10; i&#43;&#43;) { if (!cond) continue; ... // &amp;lt;- 没有额外的嵌套 } 为了创建“真正的拷贝”（一个克隆），我们可以使用 Object.assign 来做所谓的“浅拷贝”（嵌套对象被通过引用进行拷贝）或者使用“深拷贝”函数，例如 _.cloneDeep(obj)。" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://MoeSinon.github.io/blog/posts/threedays-jsreact-easy/" />
+
+
+    <title>
+        
+             :: Take Care And Be Well 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/blog/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/blog/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/blog/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/blog/favicon-16x16.png">
+    <link rel="manifest" href="/blog/site.webmanifest">
+    <link rel="mask-icon" href="/blog/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/blog/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="接下来我们进入技巧模式，技巧模式需要你注意，注意，注意，无需动脑子
+首先随便开启一个后台控制控制器，如果不是赋值那就不要加”；“,当然你也可以加。
+接下来先来看一下strict模式
+&#34;use strict&#34; 如果你需要自动添加“类”和“模块”那就不要用 prompt() confirm() 可以试试 零填充右移位 （&gt;&gt;&gt; ) ?? 试试这个或许就知道 alert(firstName ?? lastName ?? nickName ?? &#34;Anonymous&#34;); // Supercoder 还有这个 let x = 1 &amp;&amp; 2 ?? 3; // Syntax error 想要让他work？ let x = (1 &amp;&amp; 2) ?? 3; // Works [1, 2].forEach(alert) for (let i = 0; i &lt; 10; i&#43;&#43;) { if (!cond) continue; ... // &lt;- 没有额外的嵌套 } 为了创建“真正的拷贝”（一个克隆），我们可以使用 Object.assign 来做所谓的“浅拷贝”（嵌套对象被通过引用进行拷贝）或者使用“深拷贝”函数，例如 _.cloneDeep(obj)。">
+
+<meta itemprop="wordCount" content="451"><meta itemprop="image" content="https://MoeSinon.github.io/blog"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://MoeSinon.github.io/blog"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="接下来我们进入技巧模式，技巧模式需要你注意，注意，注意，无需动脑子
+首先随便开启一个后台控制控制器，如果不是赋值那就不要加”；“,当然你也可以加。
+接下来先来看一下strict模式
+&#34;use strict&#34; 如果你需要自动添加“类”和“模块”那就不要用 prompt() confirm() 可以试试 零填充右移位 （&gt;&gt;&gt; ) ?? 试试这个或许就知道 alert(firstName ?? lastName ?? nickName ?? &#34;Anonymous&#34;); // Supercoder 还有这个 let x = 1 &amp;&amp; 2 ?? 3; // Syntax error 想要让他work？ let x = (1 &amp;&amp; 2) ?? 3; // Works [1, 2].forEach(alert) for (let i = 0; i &lt; 10; i&#43;&#43;) { if (!cond) continue; ... // &lt;- 没有额外的嵌套 } 为了创建“真正的拷贝”（一个克隆），我们可以使用 Object.assign 来做所谓的“浅拷贝”（嵌套对象被通过引用进行拷贝）或者使用“深拷贝”函数，例如 _.cloneDeep(obj)。"/>
+
+
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="接下来我们进入技巧模式，技巧模式需要你注意，注意，注意，无需动脑子
+首先随便开启一个后台控制控制器，如果不是赋值那就不要加”；“,当然你也可以加。
+接下来先来看一下strict模式
+&#34;use strict&#34; 如果你需要自动添加“类”和“模块”那就不要用 prompt() confirm() 可以试试 零填充右移位 （&gt;&gt;&gt; ) ?? 试试这个或许就知道 alert(firstName ?? lastName ?? nickName ?? &#34;Anonymous&#34;); // Supercoder 还有这个 let x = 1 &amp;&amp; 2 ?? 3; // Syntax error 想要让他work？ let x = (1 &amp;&amp; 2) ?? 3; // Works [1, 2].forEach(alert) for (let i = 0; i &lt; 10; i&#43;&#43;) { if (!cond) continue; ... // &lt;- 没有额外的嵌套 } 为了创建“真正的拷贝”（一个克隆），我们可以使用 Object.assign 来做所谓的“浅拷贝”（嵌套对象被通过引用进行拷贝）或者使用“深拷贝”函数，例如 _.cloneDeep(obj)。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://MoeSinon.github.io/blog/posts/threedays-jsreact-easy/" /><meta property="og:image" content="https://MoeSinon.github.io/blog"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Take Care And Be Well" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/blog" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">catch the time</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/blog/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://MoeSinon.github.io/blog/posts/threedays-jsreact-easy/"></a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>接下来我们进入技巧模式，技巧模式需要你注意，注意，注意，无需动脑子</p>
+<p>首先随便开启一个后台控制控制器，如果不是赋值那就不要加”；“,当然你也可以加。</p>
+<p>接下来先来看一下strict模式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;use strict&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">如果你需要自动添加</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">类</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">和</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">模块</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">那就不要用</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">prompt</span>() <span style="color:#a6e22e">confirm</span>() <span style="color:#a6e22e">可以试试</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">零填充右移位</span> <span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">&gt;&gt;&gt;</span> )
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#f92672">??</span> 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">试试这个或许就知道</span>    
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">firstName</span> <span style="color:#f92672">??</span> <span style="color:#a6e22e">lastName</span> <span style="color:#f92672">??</span> <span style="color:#a6e22e">nickName</span> <span style="color:#f92672">??</span> <span style="color:#e6db74">&#34;Anonymous&#34;</span>); <span style="color:#75715e">// Supercoder
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">还有这个</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">??</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">// Syntax error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">想要让他work</span><span style="color:#960050;background-color:#1e0010">？</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">??</span> <span style="color:#ae81ff">3</span>; <span style="color:#75715e">// Works
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>].<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">alert</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span>let i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> 10<span style="color:#f92672">;</span> i<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>cond<span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span>  <span style="color:#75715e">// &lt;- 没有额外的嵌套
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>为了创建“真正的拷贝”（一个克隆），我们可以使用 <code>Object.assign</code> 来做所谓的“浅拷贝”（嵌套对象被通过引用进行拷贝）或者使用“深拷贝”函数，例如 <a href="https://lodash.com/docs#cloneDeep">_.cloneDeep(obj)</a>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">object</span>;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">垃圾回收</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">对于开发者来说</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">JavaScript</span> <span style="color:#a6e22e">的内存管理是自动的</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">无形的</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">我们创建的原始值</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">对象</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">函数</span><span style="color:#960050;background-color:#1e0010">……</span><span style="color:#a6e22e">这一切都会占用内存</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">当我们不再需要某个东西时会发生什么</span><span style="color:#960050;background-color:#1e0010">？</span><span style="color:#a6e22e">JavaScript</span> <span style="color:#a6e22e">引擎如何发现它并清理它</span><span style="color:#960050;background-color:#1e0010">？</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">可达性</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">Reachability</span><span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">JavaScript</span> <span style="color:#a6e22e">中主要的内存管理概念是</span> <span style="color:#a6e22e">可达性</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">简而言之</span><span style="color:#960050;background-color:#1e0010">，“</span><span style="color:#a6e22e">可达</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">值是那些以某种方式可访问或可用的值</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">它们一定是存储在内存中的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">这里列出固有的可达值的基本集合</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">这些值明显不能被释放</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">比方说</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">当前执行的函数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">它的局部变量和参数</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">当前嵌套调用链上的其他函数</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#a6e22e">它们的局部变量和参数</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">全局变量</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">还有一些内部的</span><span style="color:#960050;background-color:#1e0010">）</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">这些值被称作</span> <span style="color:#a6e22e">根</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">roots</span><span style="color:#960050;background-color:#1e0010">）。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">如果一个值可以通过引用或引用链从根访问任何其他值</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">则认为该值是可达的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">比方说</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">如果全局变量中有一个对象</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并且该对象有一个属性引用了另一个对象</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">则</span> <span style="color:#a6e22e">该</span> <span style="color:#a6e22e">对象被认为是可达的</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">而且它引用的内容也是可达的</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">下面是详细的例子</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">在</span> <span style="color:#a6e22e">JavaScript</span> <span style="color:#a6e22e">引擎中有一个被称作</span> <span style="color:#a6e22e">垃圾回收器</span> <span style="color:#a6e22e">的东西在后台执行</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">它监控着所有对象的状态</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并删除掉那些已经不可达的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">一个简单的例子</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">这里是一个最简单的例子</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// user 具有对这个对象的引用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">这里的箭头描述了一个对象引用</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">全局变量</span> <span style="color:#e6db74">&#34;user&#34;</span> <span style="color:#a6e22e">引用了对象</span> {<span style="color:#a6e22e">name</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#e6db74">&#34;John&#34;</span>}<span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">为简洁起见</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">我们称它为</span> <span style="color:#a6e22e">John</span><span style="color:#960050;background-color:#1e0010">）。</span><span style="color:#a6e22e">John</span> <span style="color:#a6e22e">的</span> <span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#a6e22e">属性存储一个原始值</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">所以它被写在对象内部</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">如果</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">的值被重写了</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">这个引用就没了</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现在</span> <span style="color:#a6e22e">John</span> <span style="color:#a6e22e">变成不可达的了</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">因为没有引用了</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">就不能访问到它了</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">垃圾回收器会认为它是垃圾数据并进行回收</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">然后释放内存</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">两个引用</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现在让我们想象下</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">我们把</span> <span style="color:#a6e22e">user</span> <span style="color:#a6e22e">的引用复制给</span> <span style="color:#a6e22e">admin</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// user 具有对这个对象的引用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">admin</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现在如果执行刚刚的那个操作</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">……</span><span style="color:#a6e22e">然后对象仍然可以被通过</span> <span style="color:#a6e22e">admin</span> <span style="color:#a6e22e">这个全局变量访问到</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">所以对象还在内存中</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">如果我们又重写了</span> <span style="color:#a6e22e">admin</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">对象就会被删除</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">相互关联的对象</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现在来看一个更复杂的例子</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">这是个家庭</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">marry</span>(<span style="color:#a6e22e">man</span>, <span style="color:#a6e22e">woman</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">woman</span>.<span style="color:#a6e22e">husband</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">man</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">man</span>.<span style="color:#a6e22e">wife</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">woman</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">father</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">man</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">mother</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">woman</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">family</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">marry</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>
+</span></span><span style="display:flex;"><span>}, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ann&#34;</span>
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">marry</span> <span style="color:#a6e22e">函数通过让两个对象相互引用使它们</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">结婚</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">了</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并返回了一个包含这两个对象的新对象</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">由此产生的内存结构</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">到目前为止</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">所有对象都是可达的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现在让我们移除两个引用</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">family</span>.<span style="color:#a6e22e">father</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">family</span>.<span style="color:#a6e22e">mother</span>.<span style="color:#a6e22e">husband</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">仅删除这两个引用中的一个是不够的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">因为所有的对象仍然都是可达的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">但是</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">如果我们把这两个都删除</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">那么我们可以看到再也没有对</span> <span style="color:#a6e22e">John</span> <span style="color:#a6e22e">的引用了</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">对外引用不重要</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">只有传入引用才可以使对象可达</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">所以</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">John</span> <span style="color:#a6e22e">现在是不可达的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并且将被从内存中删除</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">同时</span> <span style="color:#a6e22e">John</span> <span style="color:#a6e22e">的所有数据也将变得不可达</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">经过垃圾回收</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">无法到达的岛屿</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">几个对象相互引用</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">但外部没有对其任意对象的引用</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">这些对象也可能是不可达的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并被从内存中删除</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">源对象与上面相同</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">然后</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">family</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">内存内部状态将变成</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">这个例子展示了可达性概念的重要性</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">显而易见</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">John</span> <span style="color:#a6e22e">和</span> <span style="color:#a6e22e">Ann</span> <span style="color:#a6e22e">仍然连着</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">都有传入的引用</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">但是</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">这样还不够</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">前面说的</span> <span style="color:#e6db74">&#34;family&#34;</span> <span style="color:#a6e22e">对象已经不再与根相连</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">没有了外部对其的引用</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">所以它变成了一座</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">孤岛</span><span style="color:#960050;background-color:#1e0010">”，</span><span style="color:#a6e22e">并且将被从内存中删除</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">内部算法</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">垃圾回收的基本算法被称为</span> <span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">mark</span><span style="color:#f92672">-</span><span style="color:#a6e22e">and</span><span style="color:#f92672">-</span><span style="color:#a6e22e">sweep</span><span style="color:#960050;background-color:#1e0010">”。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">定期执行以下</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">垃圾回收</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">步骤</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">垃圾收集器找到所有的根</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">标记</span><span style="color:#960050;background-color:#1e0010">”（</span><span style="color:#a6e22e">记住</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">它们</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">然后它遍历并</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">标记</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">来自它们的所有引用</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">然后它遍历标记的对象并标记</span> <span style="color:#a6e22e">它们的</span> <span style="color:#a6e22e">引用</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">所有被遍历到的对象都会被记住</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">以免将来再次遍历到同一个对象</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">……</span><span style="color:#a6e22e">如此操作</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">直到所有可达的</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">从根部</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">引用都被访问到</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">没有被标记的对象都会被删除</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">例如</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">使我们的对象有如下的结构</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">我们可以清楚地看到右侧有一个</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">无法到达的岛屿</span><span style="color:#960050;background-color:#1e0010">”。</span><span style="color:#a6e22e">现在我们来看看</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">标记和清除</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">垃圾收集器如何处理它</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">第一步标记所有的根</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">然后它们的引用被标记了</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">……</span><span style="color:#a6e22e">如果还有引用的话</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">继续标记</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现在</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">无法通过这个过程访问到的对象被认为是不可达的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并且会被删除</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">我们还可以将这个过程想象成从根溢出一个巨大的油漆桶</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">它流经所有引用并标记所有可到达的对象</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">然后移除未标记的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">这是垃圾收集工作的概念</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">JavaScript</span> <span style="color:#a6e22e">引擎做了许多优化</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">使垃圾回收运行速度更快</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并且不影响正常代码运行</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">一些优化建议</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">分代收集</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">Generational</span> <span style="color:#a6e22e">collection</span><span style="color:#960050;background-color:#1e0010">）——</span> <span style="color:#a6e22e">对象被分成两组</span><span style="color:#960050;background-color:#1e0010">：“</span><span style="color:#a6e22e">新的</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">和</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">旧的</span><span style="color:#960050;background-color:#1e0010">”。</span><span style="color:#a6e22e">许多对象出现</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">完成它们的工作并很快死去</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">它们可以很快被清理</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">那些长期存活的对象会变得</span><span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">老旧</span><span style="color:#960050;background-color:#1e0010">”，</span><span style="color:#a6e22e">而且被检查的频次也会减少</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">增量收集</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">Incremental</span> <span style="color:#a6e22e">collection</span><span style="color:#960050;background-color:#1e0010">）——</span> <span style="color:#a6e22e">如果有许多对象</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并且我们试图一次遍历并标记整个对象集</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">则可能需要一些时间</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并在执行过程中带来明显的延迟</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">所以引擎试图将垃圾收集工作分成几部分来做</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">然后将这几部分会逐一进行处理</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">这需要它们之间有额外的标记来追踪变化</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">但是这样会有许多微小的延迟而不是一个大的延迟</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">闲时收集</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">Idle</span><span style="color:#f92672">-</span><span style="color:#a6e22e">time</span> <span style="color:#a6e22e">collection</span><span style="color:#960050;background-color:#1e0010">）——</span> <span style="color:#a6e22e">垃圾收集器只会在</span> <span style="color:#a6e22e">CPU</span> <span style="color:#a6e22e">空闲时尝试运行</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">以减少可能对代码执行的影响</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">还有其他垃圾回收算法的优化和风格</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">尽管我想在这里描述它们</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">但我必须打住了</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">因为不同的引擎会有不同的调整和技巧</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">而且</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">更重要的是</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">随着引擎的发展</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">情况会发生变化</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">所以在没有真实需求的时候</span><span style="color:#960050;background-color:#1e0010">，“</span><span style="color:#a6e22e">提前</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#a6e22e">学习这些内容是不值得的</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">当然</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">除非你纯粹是出于兴趣</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">我在下面给你提供了一些相关链接</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">总结</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">主要需要掌握的内容</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">垃圾回收是自动完成的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">我们不能强制执行或是阻止执行</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">当对象是可达状态时</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">它一定是存在于内存中的</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">被引用与可访问</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">从一个根</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">不同</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">一组相互连接的对象可能整体都不可达</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">现代引擎实现了垃圾回收的高级算法</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">《</span><span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Garbage</span> <span style="color:#a6e22e">Collection</span> <span style="color:#a6e22e">Handbook</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Art</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">Automatic</span> <span style="color:#a6e22e">Memory</span> <span style="color:#a6e22e">Management</span><span style="color:#960050;background-color:#1e0010">》（</span><span style="color:#a6e22e">R</span>. <span style="color:#a6e22e">Jones</span> <span style="color:#a6e22e">等人著</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">这本书涵盖了其中一些内容</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">如果你熟悉底层</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">low</span><span style="color:#f92672">-</span><span style="color:#a6e22e">level</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">编程</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">关于</span> <span style="color:#a6e22e">V8</span> <span style="color:#a6e22e">引擎垃圾回收器的更详细信息请参阅文章</span> <span style="color:#a6e22e">V8</span> <span style="color:#a6e22e">之旅</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">垃圾回收</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">V8</span> <span style="color:#a6e22e">博客</span> <span style="color:#a6e22e">还不时发布关于内存管理变化的文章</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">当然</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">为了学习垃圾收集</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">你最好通过学习</span> <span style="color:#a6e22e">V8</span> <span style="color:#a6e22e">引擎内部知识来进行准备</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">并阅读一个名为</span> <span style="color:#a6e22e">Vyacheslav</span> <span style="color:#a6e22e">Egorov</span> <span style="color:#a6e22e">的</span> <span style="color:#a6e22e">V8</span> <span style="color:#a6e22e">引擎工程师的博客</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">我之所以说</span> <span style="color:#960050;background-color:#1e0010">“</span><span style="color:#a6e22e">V8</span><span style="color:#960050;background-color:#1e0010">”，</span><span style="color:#a6e22e">因为网上关于它的文章最丰富的</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">对于其他引擎</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">许多方法是相似的</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">但在垃圾收集上许多方面有所不同</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">当你需要底层的优化时</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">对引擎有深入了解将很有帮助</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">在熟悉了这门编程语言之后</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">把熟悉引擎作为下一步计划是明智之选</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span></code></pre></div><p>构造函数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">什么构造函数</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">构造函数在技术上是常规函数</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">不过有两个约定</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">它们的命名以大写字母开头</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">它们只能由</span> <span style="color:#e6db74">&#34;new&#34;</span> <span style="color:#a6e22e">操作符来执行</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">其实构造函数仅仅是常规函数中的一种</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">只不过你可以复用</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;.elem&#39;</span>)<span style="color:#a6e22e">属性选择器</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">可选链</span><span style="color:#f92672">?</span>.
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">例如</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">prop</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">如果</span> <span style="color:#a6e22e">value</span> <span style="color:#a6e22e">存在</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">则结果与</span> <span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">prop</span> <span style="color:#a6e22e">相同</span><span style="color:#960050;background-color:#1e0010">，</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">否则</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">当</span> <span style="color:#a6e22e">value</span> <span style="color:#a6e22e">为</span> <span style="color:#66d9ef">undefined</span><span style="color:#f92672">/</span><span style="color:#66d9ef">null</span> <span style="color:#a6e22e">时</span><span style="color:#960050;background-color:#1e0010">）</span><span style="color:#a6e22e">则返回</span> <span style="color:#66d9ef">undefined</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>( <span style="color:#a6e22e">user</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">address</span> ); <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>( <span style="color:#a6e22e">user</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">street</span> ); <span style="color:#75715e">// undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>       
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">userGuest</span> <span style="color:#f92672">=</span> {};
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">userAdmin</span>.<span style="color:#a6e22e">admin</span><span style="color:#f92672">?</span>.(); <span style="color:#75715e">// I am admin
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">userGuest</span>.<span style="color:#a6e22e">admin</span><span style="color:#f92672">?</span>.(); <span style="color:#75715e">// 啥都没发生（没有这样的方法）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">user</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">name</span>; <span style="color:#75715e">// 如果 user 存在，则删除 user.name&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">user</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John&#34;</span>; <span style="color:#75715e">// Error，不起作用
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 因为它在计算的是：undefined = &#34;John&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">prop</span> <span style="color:#960050;background-color:#1e0010">——</span> <span style="color:#a6e22e">如果</span> <span style="color:#a6e22e">obj</span> <span style="color:#a6e22e">存在则返回</span> <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">prop</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">否则返回</span> <span style="color:#66d9ef">undefined</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span><span style="color:#f92672">?</span>.[<span style="color:#a6e22e">prop</span>] <span style="color:#960050;background-color:#1e0010">——</span> <span style="color:#a6e22e">如果</span> <span style="color:#a6e22e">obj</span> <span style="color:#a6e22e">存在则返回</span> <span style="color:#a6e22e">obj</span>[<span style="color:#a6e22e">prop</span>]<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">否则返回</span> <span style="color:#66d9ef">undefined</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">method</span><span style="color:#f92672">?</span>.() <span style="color:#960050;background-color:#1e0010">——</span> <span style="color:#a6e22e">如果</span> <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">method</span> <span style="color:#a6e22e">存在则调用</span> <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">method</span>()<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">否则返回</span> <span style="color:#66d9ef">undefined</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span></code></pre></div><p>symbol</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">根据规范</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">只有两种原始类型可以用作对象属性键</span><span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">字符串类型</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">symbol</span> <span style="color:#a6e22e">类型</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">否则</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">如果使用另一种类型</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">例如数字</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">它会被自动转换为字符串</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#a6e22e">所以</span> <span style="color:#a6e22e">obj</span>[<span style="color:#ae81ff">1</span>] <span style="color:#a6e22e">与</span> <span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#34;1&#34;</span>] <span style="color:#a6e22e">相同</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">而</span> <span style="color:#a6e22e">obj</span>[<span style="color:#66d9ef">true</span>] <span style="color:#a6e22e">与</span> <span style="color:#a6e22e">obj</span>[<span style="color:#e6db74">&#34;true&#34;</span>] <span style="color:#a6e22e">相同</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#34;id&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">toString</span>()); <span style="color:#75715e">// Symbol(id)，现在它有效了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">symbol</span> <span style="color:#a6e22e">属性不参与</span> <span style="color:#66d9ef">for</span>..<span style="color:#66d9ef">in</span> <span style="color:#a6e22e">循环</span><span style="color:#960050;background-color:#1e0010">。</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#34;id&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alert</span>(<span style="color:#a6e22e">id</span>.<span style="color:#a6e22e">description</span>); <span style="color:#75715e">// id
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#34;id&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>,
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">id</span>]<span style="color:#f92672">:</span> <span style="color:#ae81ff">123</span> <span style="color:#75715e">// 而不是 &#34;id&#34;：123
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 从全局注册表中读取
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>.<span style="color:#66d9ef">for</span>(<span style="color:#e6db74">&#34;id&#34;</span>); <span style="color:#75715e">// 如果该 symbol 不存在，则创建它
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// 再次读取（可能是在代码中的另一个位置）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">idAgain</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>.<span style="color:#66d9ef">for</span>(<span style="color:#e6db74">&#34;id&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 相同的 symbol
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">alert</span>( <span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">idAgain</span> ); <span style="color:#75715e">// true
+</span></span></span></code></pre></div>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        451 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          0001-01-01 08:00
+        
+
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=&amp;caption=&amp;canonicalUrl=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=&amp;body=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f&amp;media=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f;description=" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f&amp;title=&amp;summary=&amp;source=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f&amp;resubmit=true&amp;title=" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f;title=" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=%20https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f&amp;t=" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=&amp;url=https%3a%2f%2fMoeSinon.github.io%2fblog%2fposts%2fthreedays-jsreact-easy%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+    <div class="pagination">
+        
+        <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+        </div>
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://MoeSinon.github.io/blog/posts/program/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text"></span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://MoeSinon.github.io/blog/posts/threedays-jsreact/">
+                    <span class="button__text"></span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/blog/bundle.min.a2c5b062c87998f04d1b5dfb6a89a1b2d79786c21d0cb63a05e8a2082984b64b77d80955e3b97eab17273775162ba372511b711fea2f7608f216e68a67bb22d6.js" integrity="sha512-osWwYsh5mPBNG137aomhsteXhsIdDLY6BeiiCCmEtkt32AlV47l&#43;qxcnN3UWK6NyURtxH&#43;ovdgjyFuaKZ7si1g=="></script>
+
+
+
+    </body>
+</html>

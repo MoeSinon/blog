@@ -7,5 +7,98 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><atom:link href="https://MoeSinon.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/appendix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/appendix/</guid>
+      <description>let 我 = &amp;#39;...&amp;#39;; //允许 prompt(title, [default]);//可以指定初始值 两个非运算 !! 有时候用来将某个值转化为布尔类型 a ?? b 的结果是： 如果 a 是已定义的，则结果为 a， 如果 a 不是已定义的，则结果为 b。 case 2: case 3: alert( &amp;#39;2,3&amp;#39; ); 空值的 return 和 return undefined 等效： function getInfo(userObj){...}, 函数调用: getInfo({name: &amp;#39;&amp;#39;, id: &amp;#39;&amp;#39;, age: &amp;#39;&amp;#39;}) function sayHi() { // (1) 创建 alert( &amp;#34;Hello&amp;#34; ); } let func = sayHi; // (2) 复制 func(); // Hello // (3) 运行复制的值（正常运行）！ 函数表达式是在代码执行到达时被创建，并且仅从那一刻起可用。 在函数声明被定义之前，它就可以被调用。 sayHi(&amp;#34;John&amp;#34;); // Hello, John function sayHi(name) { alert( `Hello, ${name}` ); } let sum = (a, b) =&amp;gt; { // 花括号表示开始一个多行函数 let result = a + b; return result; // 如果我们使用了花括号，那么我们需要一个显式的 “return” }; alert( sum(1, 2) ); // 3 [1, 2].</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/javascript/</guid>
+      <description>比较
+search 和 indexOf match //同样可用于数组 substr //索引切片 数组为slice trim //删除字符串开头或结尾的尾随空格。 includes // concat //连接两个数组，也可以连接字符串，对然属于两个不同的对象 startsWith //ends repeat// parseInt（）// parseFloat（）// Number（）//都可以用 ? : //三元运算符 confirm //单击“确定”将生成 true 值，而单击“取消”按钮将生成 false 值 fill //数组填充 Array() //新建数组 isArray //检查数据类型是否为数组 join //连接数组元素 splice // foreach //arr.forEach(func) —— forEach 对每个数组元素都执行 func //通常用来遍历数组，不会返回一个新数组 //Map也可以使用 map //可以返回一个新数组，方法和foreach一样，接受callback函数，其实就是有返回值的普通函数 filter find//可以返回一个新数组，方法和foreach一样，接受callback函数，其实就是有返回值的普通函数,//返回满足条件的第一个元素find( (name) =&amp;gt; name &amp;gt; 1) reduce //const sum = numbers.reduce((acc, cur) =&amp;gt; acc + cur, 0) 0表示起始计算值 every some//检查所有元素在一个方面是否相似。它返回布尔值every((name) =&amp;gt; typeof name === &amp;#39;string&amp;#39;)，而some检查某个元素在一个方面是否相似 countries = [ [&amp;#39;Finland&amp;#39;, &amp;#39;Helsinki&amp;#39;], [&amp;#39;Sweden&amp;#39;, &amp;#39;Stockholm&amp;#39;], [&amp;#39;Norway&amp;#39;, &amp;#39;Oslo&amp;#39;], ] const map = new Map(countries) set //add,delete,has,clear map //set,get,has //解构 const countries = [[&amp;#39;Finland&amp;#39;, &amp;#39;Helsinki&amp;#39;], [&amp;#39;Sweden&amp;#39;, &amp;#39;Stockholm&amp;#39;], [&amp;#39;Norway&amp;#39;, &amp;#39;Oslo&amp;#39;]] for (const [country, city] of countries) { console.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/javascripthigheruse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/javascripthigheruse/</guid>
+      <description>JavaScript对象属性访问
+writable //如果为 true，则值可以被修改，否则它是只可读的。 enumerable //如果为 true，则会被在循环中列出，否则不会被列出。 configurable //如果为 true，则此属性可以被删除，以上特性也可以被修改，否则不可以。 Object.getOwnPropertyDescriptor(obj, propertyName); //一次获取所有属性描述符,一起可以用作克隆对象的“标志感知”方式 Object.defineProperties({},Object.getOwnPropertyDescriptors(obj)); Object.defineProperty(obj, propertyName, descriptor) //允许一次定义多个属性 Object.defineProperties(obj, { prop1: descriptor1, prop2: descriptor2 // ... }); let user = {}; Object.defineProperty(user, &amp;#34;name&amp;#34;, { value: &amp;#34;John&amp;#34; }); let descriptor = Object.getOwnPropertyDescriptor(user, &amp;#39;name&amp;#39;); alert( JSON.stringify(descriptor, null, 2 ) ); Object.defineProperty(user, &amp;#34;name&amp;#34;, { writable: false }); user.name = &amp;#34;Pete&amp;#34;; //通过更改 writable 标志来把 user.name 设置为只读（user.name 不能被重新赋值 /* { &amp;#34;value&amp;#34;: &amp;#34;John&amp;#34;, &amp;#34;writable&amp;#34;: false, &amp;#34;enumerable&amp;#34;: false, &amp;#34;configurable&amp;#34;: false } */ 原型</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/ow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/ow/</guid>
+      <description>文档对象模型（Document Object Model），简称 DOM
+浏览器对象模型（Browser Object Model），简称 BOM，表示由浏览器（主机环境）提供的用于处理文档（document）之外的所有内容的其他对象。
+可以使用 for..of 对集合进行迭代。不要尝试使用 for..in 来迭代集合。for..in 循环遍历的是所有可枚举的（enumerable）属性。集合还有一些“额外的”很少被用到的属性，通常这些属性也是我们不期望得到的：
+脚本是“异步”调用的
+let promise = new Promise(function(resolve, reject) { // executor（生产者代码，“歌手”） }); resolve(value) —— 如果任务成功完成并带有结果 value。 reject(error) —— 如果出现了 error，error 即为 error 对象。 promise函数对象里有三个属性.then.catch和.finally
+window.addEventListener(&amp;#39;unhandledrejection&amp;#39;, function(event) { // 这个事件对象有两个特殊的属性： alert(event.promise); // [object Promise] - 生成该全局 error 的 promise alert(event.reason); // Error: Whoops! - 未处理的 error 对象 }); new Promise(function() { throw new Error(&amp;#34;Whoops!&amp;#34;); }); // 没有用来处理 error 的 catch Promise.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/program/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/program/</guid>
+      <description>多参数
+与golang细微差别实在Rest 参数可以通过使用三个点 ... 并在后面跟着包含剩余参数的数组名称，来将它们包含在函数定义中。这些点的字面意思是“将剩余参数收集到一个数组中”。
+有一个名为 arguments 的特殊的类数组对象，该对象按参数索引包含所有参数。如果我们在箭头函数中访问 arguments，访问到的 arguments 并不属于箭头函数，而是属于箭头函数外部的“普通”函数。
+function f() { let showArg = () =&amp;gt; alert(arguments[0]); showArg(); } f(1); // 1 let arr = [3, 5, 1]; alert( Math.max(...arr) ); // 5（spread 语法把数组转换为参数列表） let arr1 = [1, -2, 3, 4]; let arr2 = [8, 3, -8, 1]; alert( Math.max(...arr1, ...arr2) ); // 8 let arr1 = [1, -2, 3, 4]; let arr2 = [8, 3, -8, 1]; alert( Math.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/threedays-jsreact-easy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/threedays-jsreact-easy/</guid>
+      <description>接下来我们进入技巧模式，技巧模式需要你注意，注意，注意，无需动脑子
+首先随便开启一个后台控制控制器，如果不是赋值那就不要加”；“,当然你也可以加。
+接下来先来看一下strict模式
+&amp;#34;use strict&amp;#34; 如果你需要自动添加“类”和“模块”那就不要用 prompt() confirm() 可以试试 零填充右移位 （&amp;gt;&amp;gt;&amp;gt; ) ?? 试试这个或许就知道 alert(firstName ?? lastName ?? nickName ?? &amp;#34;Anonymous&amp;#34;); // Supercoder 还有这个 let x = 1 &amp;amp;&amp;amp; 2 ?? 3; // Syntax error 想要让他work？ let x = (1 &amp;amp;&amp;amp; 2) ?? 3; // Works [1, 2].forEach(alert) for (let i = 0; i &amp;lt; 10; i++) { if (!cond) continue; ... // &amp;lt;- 没有额外的嵌套 } 为了创建“真正的拷贝”（一个克隆），我们可以使用 Object.assign 来做所谓的“浅拷贝”（嵌套对象被通过引用进行拷贝）或者使用“深拷贝”函数，例如 _.cloneDeep(obj)。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/threedays-jsreact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/threedays-jsreact/</guid>
+      <description>JavaScripts基础赏析 基于ES6，现代javascript基础以及函数式编程
+首先你必须得知道
+什么是值，primitive and object
+primitive：null，undefined和8种类型，另外要注意&amp;quot;number&amp;quot;类型其实是int
+object：数组，是的数组也是对象，在golang中你也可以将数组视为对象
+typeof undefined; // &amp;#34;undefined&amp;#34; typeof null; // &amp;#34;object&amp;#34; -- oops, bug! null === undefined; // false&amp;#34;这是一个和number&amp;#34; NaN === NaN; // false 0 === -0; // true 以上当出现对象之间进行比较采用引用比较，就算是相同的结构体也无法三等，或许这和golang有些相同
+除此之外还有闭包，这也是和golang相似的地方，你会发现闭包是存在状态的，在每次调用该闭包时都会更新。闭的是变量，而不仅仅是值的快照，或者你可以将其视为回调的一种，只不过你在手动操作而已
+function counter(step = 1) { var count = 0; return function increaseCount(){ count = count + step; return count; }; } var incBy1 = counter(1); var incBy3 = counter(3); incBy1(); // 1 incBy1(); // 2 incBy3(); // 3 incBy3(); // 6 incBy3(); // 9 func counter(a int) func() int { var b int return func() int { b = b + a return b } } func main() { var c = counter(1) log.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://MoeSinon.github.io/blog/posts/uslword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://MoeSinon.github.io/blog/posts/uslword/</guid>
+      <description>常用的javascript关键词
+数据相关的: toString() toFixed()//将数字舍入到小数点后 n 位，并以字符串形式返回结果 alert( 6.35.toFixed(1) ); // 6.3 //由于精度问题你可以先使用round缩减至1个精度再扩大精度 alert( num.toString(2) ); // 11111111 其值大小最小2进制最大36进制 isNaN(value)//值 “NaN” 是独一无二的，它不等于任何东西，包括它自身,该函数会先转换成数然后再比较是否为0 Object.is(NaN，NaN)//类似于===但可以比较NaN isFinite(value) parseInt()//和+号区别就是只要按顺序读字符串只要不是非字符串就能转换，+就严格许多 parseFloat() 一般小数基本会出现精度损失 Math.floor Math.ceil Math.round Math.trunc &amp;lt;h1&amp;gt;字符串相关&amp;lt;/h1&amp;gt; //反引号允许我们通过 ${…} 将任何表达式嵌入到字符串中 .length str.charAt() //获取在位置的一个字符,可以使用 for..of 遍历字符 str.indexOf(substr, pos)//给定位置 pos 开始，在 str 中查找 substr //JavaScript 中有三种获取字符串的方法：substring、substr 和 slice alert( &amp;#39;Interface&amp;#39;.toUpperCase() ); // INTERFACE alert( &amp;#39;Interface&amp;#39;.toLowerCase() ); // interface indexOf()//如果没有找到，则返回 -1，否则返回匹配成功的位置 (~str.indexOf(...))//对于 32-bit 整数，~n 等于 -(n+1)，所以你可以这么用if str.includes(substr, pos) 还有 startsWith，endsWith//根据 str 中是否包含 substr 来返回 true/false slice(start, end)//从 start 到 end（不含 end）允许负值,足够用 小写字母总是大于大写字母，可以使用str.</description>
+    </item>
+    
   </channel>
 </rss>
