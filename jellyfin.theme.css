@@ -1,0 +1,50 @@
+/* Icons */
+@import url("https://prayag17.github.io/Jellyfin-Icons/Outline.css"); 
+
+/* Main Theme */
+@import url('https://ctalvio.github.io/Monochromic/default_style.css');
+
+/* Restores bottom progress bar instead of entire div */
+@import url('https://ctalvio.github.io/Monochromic/bottom-progress_style.css');
+
+/* Removed blurry layout that improves performance */
+@import url('https://ctalvio.github.io/Monochromic/improve-performance_style.css');
+
+/* Adds Backdrops */
+@import url('https://ctalvio.github.io/Monochromic/backdrop-hack_style.css');
+
+/* Restores main layout in description */
+@import url('https://ctalvio.github.io/Monochromic/alternate-itempage_style.css');
+
+/* Adds Custom Color capabilities */
+@import url('https://ctalvio.github.io/Monochromic/customcolor-advanced_style.css');
+
+/* Main overrides */
+:root {--accent: 229, 9, 20;}
+:root {--rounding: 10px;}
+
+/* Backdrop Styles */
+.backdropImage { filter: blur(10px) saturate(0%) contrast(120%) brightness(20%); }
+.backgroundContainer.withBackdrop { background-color: rgba(255,0,0,0.009); }
+.layout-mobile .primaryImageWrapper > img { filter: blur(10px) saturate(0%) contrast(120%) brightness(20%); }
+
+.sectionTitle {
+    margin-left: 0 !important;
+    font-weight: bold;
+}
+
+.sectionTitleContainer-cards {
+    padding-bottom: 0.7em;
+}
+
+.card {
+    margin-right: 10px;
+}
+
+.cardText-first {
+    padding-top: 0.7em;
+}
+
+.libraryMenuOptions {
+    display: none;
+}
